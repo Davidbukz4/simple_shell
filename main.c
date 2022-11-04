@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /**
  * main - a simple shell program
@@ -14,6 +15,7 @@ int main(void)
 	size_t x = 0, n = 8;
 	pid_t child_pid;
 	int status;
+	struct stat sb;
 
 	while (1)
 	{
@@ -26,23 +28,33 @@ int main(void)
 			(buf)[x - 1] = '\0';
 		argv = _strtow(buf);
 
-		child_pid = fork();
-		if (child_pid == -1)
+		if (stat(argv[0], &sb) == 0)
 		{
-			perror("Error:");
-			return (1);
-		}
-		if (child_pid == 0)
-		{
-			if (execve(argv[0], argv, NULL) == -1)
+			child_pid = fork();
+			if (child_pid == -1)
 			{
 				perror("Error:");
+				return (1);
+			}
+			if (child_pid == 0)
+			{
+				if (execve(argv[0], argv, NULL) == -1)
+				{
+					printf("ok\n");
+					perror("Error");
+				}
+			}
+			else
+			{
+				wait(&status);
 			}
 		}
 		else
 		{
-			wait(&status);
+			printf("not working\n");
+			perror("Error");
 		}
+
 	}
 	return (0);
 }
