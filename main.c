@@ -12,6 +12,8 @@ int main(void)
 	char *buf = NULL;
 	char *argv[2];
 	size_t x = 0, n = 8;
+	pid_t child_pid;
+	int status;
 
 	while (1)
 	{
@@ -24,10 +26,22 @@ int main(void)
 			(buf)[x - 1] = '\0';
 		argv[0] = strtok(buf, " ");
 		argv[1] = NULL;
-		printf("You entered: %s and %s", argv[0], argv[1]);
-		if (execve(argv[0], argv, NULL) == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
 			perror("Error:");
+			return (1);
+		}
+		if (child_pid == 0)
+		{
+			if (execve(argv[0], argv, NULL) == -1)
+			{
+				perror("Error:");
+			}
+		}
+		else
+		{
+			wait(&status);
 		}
 	}
 	return (0);
