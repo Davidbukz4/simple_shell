@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  * strtow - function that splits a string into words.
@@ -7,7 +6,7 @@
  * Return: pionter
  */
 
-char **strtow(char *str)
+char **_strtow(char *str)
 {
 	char *w;
 	char **s;

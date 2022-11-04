@@ -10,7 +10,7 @@
 int main(void)
 {
 	char *buf = NULL;
-	char *argv[2];
+	char **argv;
 	size_t x = 0, n = 8;
 	pid_t child_pid;
 	int status;
@@ -24,8 +24,8 @@ int main(void)
 		x = getline(&buf, &n, stdin);
 		if ((buf)[x - 1] == '\n')
 			(buf)[x - 1] = '\0';
-		argv[0] = strtok(buf, " ");
-		argv[1] = NULL;
+		argv = _strtow(buf);
+
 		child_pid = fork();
 		if (child_pid == -1)
 		{
