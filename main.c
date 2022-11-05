@@ -8,14 +8,19 @@
  * Return: 1 or 0;
  */
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
 	char *buf = NULL;
 	char **argv;
 	size_t x = 0, n = 8;
 	pid_t child_pid;
-	int status;
+	int status, i;
 	struct stat sb;
+	char *path;
+
+	if (ac || av)
+	{
+	}
 
 	while (1)
 	{
@@ -27,9 +32,19 @@ int main(void)
 		if ((buf)[x - 1] == '\n')
 			(buf)[x - 1] = '\0';
 		argv = _strtow(buf, ' ');
+
+		i = 0;
+		while (env[i] != NULL)
+		{
+			path = ch_path(argv[0], env[i]);
+			if (path)
+				break;
+			i++;
+		}
+		if (path)
+			argv[0] = path;
 		if (stat(argv[0], &sb) == 0)
 		{
-			printf("inside\n");
 			child_pid = fork();
 			if (child_pid == -1)
 			{
@@ -51,7 +66,6 @@ int main(void)
 		}
 		else
 		{
-			printf("not working\n");
 			perror("Error");
 		}
 
