@@ -1,4 +1,7 @@
 #include "main.h"
+#include <string.h>
+#include <sys/stat.h>
+#include <stdio.h>
 
 int _strlen(char *str)
 {
@@ -42,28 +45,30 @@ char *_strcat(char *dest, char *src)
 
 char *ch_path(char *cmd, char *path)
 {
-	char *full_path, *wd, *comp, *f_sl = "/";
-	int wd_len, cmd_len;
+	char **wd;
+	char *full_path, *comp, *f_sl = "/";
+	int wd_len, cmd_len, total_len, i = 0;
+	struct stat sb;
 
-	wd = strtok(path, "=");
-	wd = strtok(NULL, ":");
+	wd = _strtow(path, '=');
+	wd = _strtow(wd[1], ':');
 
 	cmd_len = _strlen(cmd);
-	while (wd)
+	while (wd[i])
 	{
-		wd_len = _strlen(wd);
+		wd_len = _strlen(wd[i]);
 		total_len = wd_len + cmd_len;
 		full_path = malloc(sizeof(char) * total_len + 2);
 		if (!full_path)
 			return (NULL);
 
-		_strncpy(full_path, wd, wd_len);
+		_strncpy(full_path, wd[i], wd_len);
 		_strcat(full_path, f_sl);
 		comp = _strcat(full_path, cmd);
 		if (stat(comp, &sb) == 0)
 			return (full_path);
 		free(full_path);
-		wd =strtok(NULL, ":");
+		i++;
 	}
 	return (NULL);
 }
