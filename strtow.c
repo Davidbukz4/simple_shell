@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * strtow - function that splits a string into words.
@@ -6,7 +7,7 @@
  * Return: pionter
  */
 
-char **_strtow(char *str)
+char **_strtow(char *str, char delim)
 {
 	char *w;
 	char **s;
@@ -16,11 +17,11 @@ char **_strtow(char *str)
 		return (NULL);
 	while (str[i])
 	{
-		if (str[i] == ' ' && str[i - 1] && str[i - 1] != ' ')
+		if (str[i] == delim && str[i - 1] && str[i - 1] != delim)
 			words++;
 		i++;
 	}
-	if (str[i] == '\0' && str[i - 1] && str[i - 1] != ' ')
+	if (str[i] == '\0' && str[i - 1] && str[i - 1] != delim)
 		words++;
 	if (words == 0)
 		return (NULL);
@@ -30,8 +31,8 @@ char **_strtow(char *str)
 	words = 0, len = i;
 	for (i = 0; i <= len; i++)
 	{
-		if ((str[i] == ' ' && str[i - 1] && str[i - 1] != ' ')
-			|| (str[i] == '\0' && str[i - 1] && str[i - 1] != ' '))
+		if ((str[i] == delim && str[i - 1] && str[i - 1] != delim)
+			|| (str[i] == '\0' && str[i - 1] && str[i - 1] != delim))
 		{
 			w = (char *) malloc(sizeof(char) * (j + 1));
 			if (w == NULL)
@@ -46,5 +47,6 @@ char **_strtow(char *str)
 		else if (str[i] != ' ')
 			j++;
 	}
+	s[words] = NULL;
 	return (s);
 }

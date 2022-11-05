@@ -7,6 +7,6 @@
 #include <sys/wait.h>
 
 int _putchar(char c);
-char **_strtow(char *str);
+char **_strtow(char *str, char delim);
 
 #endif /* MAIN_H */

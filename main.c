@@ -26,10 +26,10 @@ int main(void)
 		x = getline(&buf, &n, stdin);
 		if ((buf)[x - 1] == '\n')
 			(buf)[x - 1] = '\0';
-		argv = _strtow(buf);
-
+		argv = _strtow(buf, ' ');
 		if (stat(argv[0], &sb) == 0)
 		{
+			printf("inside\n");
 			child_pid = fork();
 			if (child_pid == -1)
 			{
