@@ -22,5 +22,6 @@ char *_strcat(char *dest, char *src);
 char *ch_path(char *cmd, char *path);
 void gbin_func(char *arg);
 void f_exit();
+int _strcmp(char *s1, char *s2);
 
 #endif /* MAIN_H */

@@ -10,7 +10,7 @@ void gbin_func(char *arg)
 
 	for (j = 0; b_cmd[j].cmd != NULL; j++)
 	{
-		if (strcmp(arg, b_cmd[j].cmd) == 0)
+		if (_strcmp(arg, b_cmd[j].cmd) == 0)
 		{
 			b_cmd[j].func();
 		}

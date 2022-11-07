@@ -33,7 +33,7 @@ int main(int ac, char **av, char **env)
 			(buf)[x - 1] = '\0';
 		argv = _strtow(buf, ' ');
 
-		if (strcmp(argv[0], "exit") == 0)
+		if (_strcmp(argv[0], "exit") == 0)
 			gbin_func(argv[0]);
 
 		i = 0;
