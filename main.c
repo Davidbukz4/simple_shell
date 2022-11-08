@@ -14,7 +14,7 @@ int main(int ac, char **av, char **env)
 	char **argv;
 	size_t x = 0, n = 8;
 	pid_t child_pid;
-	int status, i;
+	int status, i, cont;
 	struct stat sb;
 	char *path;
 
@@ -33,9 +33,12 @@ int main(int ac, char **av, char **env)
 			(buf)[x - 1] = '\0';
 		argv = _strtow(buf, ' ');
 
-		if (_strcmp(argv[0], "exit") == 0)
+		cont = gbin_func(argv, env);
+		if (cont == 0)
+			continue;
+		/*if (_strcmp(argv[0], "exit") == 0)
 			gbin_func(argv[0]);
-
+		*/
 		i = 0;
 		while (env[i] != NULL)
 		{

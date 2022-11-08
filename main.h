@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -10,7 +11,7 @@
 typedef struct builtin_cmd
 {
 	char *cmd;
-	void (*func)();
+	int (*func)();
 } builtin_cmd;
 
 
@@ -20,8 +21,9 @@ int _strlen(char *str);
 char *_strncpy(char *dest, char *src, int n);
 char *_strcat(char *dest, char *src);
 char *ch_path(char *cmd, char *path);
-void gbin_func(char *arg);
-void f_exit();
+int gbin_func(char **arg, char **env);
+int f_exit(char **arg);
 int _strcmp(char *s1, char *s2);
+int f_printenv(char **arg, char **env);
 
 #endif /* MAIN_H */

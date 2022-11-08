@@ -1,7 +1,15 @@
 #include "main.h"
 
-void f_exit()
+int f_exit(char **arg)
 {
-	exit(0);
+	int i = 0;
+
+	while (arg[i])
+	{
+		if (arg[0] && !arg[1])
+			exit(0);
+		i++;
+	}
+	return (0);
 }
 
