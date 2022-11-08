@@ -97,9 +97,6 @@ int main(int ac, char **av, char **env)
 		cont = gbin_func(argv, env);
 		if (cont == 0)
 			continue;
-		/*if (_strcmp(argv[0], "exit") == 0)
-			gbin_func(argv[0]);
-		*/
 		full_path(argv, env);
 		exe_syscmd(argv);
 	}

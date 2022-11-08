@@ -12,5 +12,5 @@ int f_printenv(char **arg, char **env)
 		}
 		return (0);
 	}
-	return (0);
+	return (-1);
 }
