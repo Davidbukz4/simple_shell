@@ -4,6 +4,29 @@
 #include <sys/stat.h>
 
 /**
+ * full_path - get full path of a command
+ * @argv: command
+ * @env: env
+ * Return: void
+ */
+
+void full_path(char **argv, char **env)
+{
+	int i = 0;
+	char *path;
+
+	while (env[i] != NULL)
+	{
+		path = ch_path(argv[0], env[i]);
+		if (path)
+			break;
+		i++;
+	}
+	if (path)
+		argv[0] = path;
+}
+
+/**
  * main - a simple shell program
  * Return: 1 or 0;
  */
@@ -14,9 +37,8 @@ int main(int ac, char **av, char **env)
 	char **argv;
 	size_t x = 0, n = 8;
 	pid_t child_pid;
-	int status, i, cont;
+	int status, cont;
 	struct stat sb;
-	char *path;
 
 	if (ac || av)
 	{
@@ -39,16 +61,7 @@ int main(int ac, char **av, char **env)
 		/*if (_strcmp(argv[0], "exit") == 0)
 			gbin_func(argv[0]);
 		*/
-		i = 0;
-		while (env[i] != NULL)
-		{
-			path = ch_path(argv[0], env[i]);
-			if (path)
-				break;
-			i++;
-		}
-		if (path)
-			argv[0] = path;
+		full_path(argv, env);
 		if (stat(argv[0], &sb) == 0)
 		{
 			child_pid = fork();
