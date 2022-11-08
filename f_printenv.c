@@ -2,13 +2,17 @@
 
 int f_printenv(char **arg, char **env)
 {
-	int i;
+	int i, j;
 
 	if (arg[0] && !arg[1])
 	{
 		for (i = 0; env[i]; i++)
 		{
-			printf("%s\n", env[i]);
+			for (j = 0; j <= _strlen(env[i]); j++)
+			{
+				_putchar(env[i][j]);
+			}
+			_putchar('\n');
 		}
 		return (0);
 	}
