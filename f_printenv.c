@@ -4,7 +4,7 @@ int f_printenv(char **arg, char **env)
 {
 	int i;
 
-	if (arg[0])
+	if (arg[0] && !arg[1])
 	{
 		for (i = 0; env[i]; i++)
 		{
