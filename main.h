@@ -24,5 +24,9 @@ int gbin_func(char **arg, char **env);
 int f_exit(char **arg);
 int _strcmp(char *s1, char *s2);
 int f_printenv(char **arg, char **env);
+void full_path(char **argv, char **env);
+int exe_syscmd(char **argv);
+int exe_cmd(char *buf, char **env);
+void cmd_sep(char *buf, char **env);
 
 #endif /* MAIN_H */

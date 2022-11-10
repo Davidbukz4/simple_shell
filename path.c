@@ -43,6 +43,29 @@ char *_strcat(char *dest, char *src)
 	return (dest);
 }
 
+/**
+ * full_path - get full path of a command
+ * @argv: command
+ * @env: env
+ * Return: void
+ */
+
+void full_path(char **argv, char **env)
+{
+	int i = 0;
+	char *path;
+
+	while (env[i] != NULL)
+	{
+		path = ch_path(argv[0], env[i]);
+		if (path)
+			break;
+		i++;
+	}
+	if (path)
+	argv[0] = path;
+}
+
 char *ch_path(char *cmd, char *path)
 {
 	char **wd;

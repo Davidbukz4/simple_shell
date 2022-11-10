@@ -80,7 +80,7 @@ char **_strtow(char *str, char delim)
 			w[k] = '\0';
 			j = 0;
 		}
-		else if (str[i] != ' ')
+		else if (str[i] != delim)
 			j++;
 	}
 	s[words] = NULL;
