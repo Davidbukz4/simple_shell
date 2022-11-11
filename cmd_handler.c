@@ -64,7 +64,10 @@ void cmd_sep(char *buf, char **env)
 	char **cmds;
 	int i = 0;
 
-	cmds = _strtow(buf, ';');
+	if (buf[0] == '#')
+		return;
+	cmds = _strtow(buf, '#');
+	cmds = _strtow(cmds[0], ';');
 	while (cmds[i])
 	{
 		exe_cmd(cmds[i], env);
