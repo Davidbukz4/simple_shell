@@ -59,6 +59,34 @@ int exe_cmd(char *buf, char **env)
 	return (ret);
 }
 
+int or_sep(char *buf, char **env)
+{
+	char **cmds;
+	int i = 0, cnt = -1;
+
+	cmds = _strtow(buf, '|');
+	while (cnt != 0 && cmds[i])
+	{
+		cnt = exe_cmd(cmds[i], env);
+		i++;
+	}
+	return (cnt);
+}
+
+int and_sep(char *buf, char **env)
+{
+	char **cmds;
+	int i = 0, cnt = 0;
+
+	cmds = _strtow(buf, '&');
+	while (cnt == 0 && cmds[i])
+	{
+	        cnt = or_sep(cmds[i], env);
+	        i++;
+	}
+	return (cnt);
+}
+
 void cmd_sep(char *buf, char **env)
 {
 	char **cmds;
@@ -70,7 +98,7 @@ void cmd_sep(char *buf, char **env)
 	cmds = _strtow(cmds[0], ';');
 	while (cmds[i])
 	{
-		exe_cmd(cmds[i], env);
+		and_sep(cmds[i], env);
 		i++;
 	}
 }
