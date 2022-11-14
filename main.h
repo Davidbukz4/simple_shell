@@ -28,5 +28,6 @@ void full_path(char **argv, char **env);
 int exe_syscmd(char **argv);
 int exe_cmd(char *buf, char **env);
 void cmd_sep(char *buf, char **env);
+int _atoi(char *s);
 
 #endif /* MAIN_H */
