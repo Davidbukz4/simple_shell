@@ -29,5 +29,6 @@ int exe_syscmd(char **argv);
 int exe_cmd(char *buf, char **env);
 void cmd_sep(char *buf, char **env);
 int _atoi(char *s);
+int f_chdir(char **arg, char **env);
 
 #endif /* MAIN_H */

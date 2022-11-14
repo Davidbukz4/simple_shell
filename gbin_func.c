@@ -7,6 +7,7 @@ int gbin_func(char **arg, char **env)
 	builtin_cmd b_cmd[] = {
 		{"exit", f_exit},
 		{"env", f_printenv},
+		{"cd", f_chdir},
 		{NULL, NULL}
 	};
 
