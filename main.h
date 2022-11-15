@@ -32,5 +32,6 @@ int exe_cmd(char *buf, char **env);
 void cmd_sep(char *buf, char **env);
 int _atoi(char *s);
 int f_chdir(char **arg, char **env);
+char *_getenv(char **env, char *var);
 
 #endif /* MAIN_H */
