@@ -10,6 +10,7 @@
 #include <limits.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <errno.h>
 
 /**
  * struct builtin_cmd - structure to handle builtin command

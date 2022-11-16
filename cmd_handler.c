@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <string.h>
-#include <sys/stat.h>
 
 /**
  * exe_syscmd - execute a system command
@@ -20,14 +17,14 @@ int exe_syscmd(char **argv)
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			perror("Error:");
+			perror(argv[0]);
 			return (-1);
 		}
 		if (child_pid == 0)
 		{
 			if (execve(argv[0], argv, NULL) == -1)
 			{
-				perror("Error");
+				perror(argv[0]);
 				return (-1);
 			}
 		}
@@ -38,7 +35,7 @@ int exe_syscmd(char **argv)
 	}
 	else
 	{
-		perror("Error");
+		perror(argv[0]);
 		return (-1);
 	}
 	return (0);
