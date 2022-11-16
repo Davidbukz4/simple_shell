@@ -8,6 +8,8 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <limits.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 /**
  * struct builtin_cmd - structure to handle builtin command
