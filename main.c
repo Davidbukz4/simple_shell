@@ -33,8 +33,12 @@ int main(int ac, char **av, char **env)
 		_putchar(-1);
 
 		x = getline(&buf, &n, stdin);
+		if ((int) x == -1)
+			exit(0);
 		if ((buf)[x - 1] == '\n')
 			(buf)[x - 1] = '\0';
+		if (buf[0] == '\0')
+			continue;
 		cmd_sep(buf, env);
 	}
 	return (0);
