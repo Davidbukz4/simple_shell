@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * gbin_func - handles builtin function
+ * @arg: command argument
+ * @env: environment variables
+ * Return: 0 command execution successful, -1 otherwise
+ */
 
 int gbin_func(char **arg, char **env)
 {

@@ -3,6 +3,11 @@
 #include <sys/stat.h>
 #include <stdio.h>
 
+/**
+ * _strlen - counts length of string
+ * @str: pointer to string
+ * Return: length of string
+ */
 int _strlen(char *str)
 {
 	int x;
@@ -12,6 +17,13 @@ int _strlen(char *str)
 	return (x);
 }
 
+/**
+ * _strncpy - copies n bytes of string to a destination
+ * @dest: destination memory to copy string to
+ * @src: source string
+ * @n: number of bytes
+ * Return: pointer to destination string
+ */
 char *_strncpy(char *dest, char *src, int n)
 {
 	int i = 0;
@@ -30,6 +42,12 @@ char *_strncpy(char *dest, char *src, int n)
 	return (dest);
 }
 
+/**
+ * _strcat - concatenates source string to destination string
+ * @dest: destination string
+ * @src: source string
+ * Return: pointer to destination string
+ */
 char *_strcat(char *dest, char *src)
 {
 	int i, j;
@@ -49,7 +67,6 @@ char *_strcat(char *dest, char *src)
  * @env: env
  * Return: void
  */
-
 void full_path(char **argv, char **env)
 {
 	int i = 0;
@@ -66,6 +83,12 @@ void full_path(char **argv, char **env)
 	argv[0] = path;
 }
 
+/**
+ * ch_path - checks path variable
+ * @cmd: command argument
+ * @path: environment variable
+ * Return: full path to command argument
+ */
 char *ch_path(char *cmd, char *path)
 {
 	char **wd;

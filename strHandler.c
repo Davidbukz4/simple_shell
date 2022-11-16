@@ -7,7 +7,6 @@
  * Return: integer than is greater, lesser, or equal to zero depending
  * on string comparison
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	int x, y, z, comparison;
@@ -38,11 +37,11 @@ int _strcmp(char *s1, char *s2)
 
 
 /**
- * strtow - function that splits a string into words.
+ * _strtow - function that splits a string into words.
  * @str: string to split
- * Return: pionter
+ * @delim: character where string is to be splitted
+ * Return: pointer to array of splitted string separated by delimiter
  */
-
 char **_strtow(char *str, char delim)
 {
 	char *w;
@@ -87,7 +86,11 @@ char **_strtow(char *str, char delim)
 	return (s);
 }
 
-
+/**
+ * _atoi - converts string of numbers to integers
+ * @s: pointer to string of numbers
+ * Return: pointer to converted string of numbers
+ */
 int _atoi(char *s)
 {
 	int i, val, sign;

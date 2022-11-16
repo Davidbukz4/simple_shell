@@ -9,6 +9,11 @@
 #include <string.h>
 #include <limits.h>
 
+/**
+ * struct builtin_cmd - structure to handle builtin command
+ * @cmd: command argument
+ * @func: pointer to builtin command function
+ */
 typedef struct builtin_cmd
 {
 	char *cmd;

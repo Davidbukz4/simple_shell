@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * f_chdir - function to change directory
+ * @arg: command argument
+ * @env: environment variables
+ * Return: 0 to display command prompt whether successful execution or not
+ */
+
 int f_chdir(char **arg, char **env)
 {
 	char *path, *f_sl = "/", cwd[PATH_MAX];
@@ -25,8 +32,7 @@ int f_chdir(char **arg, char **env)
 	{
 		if (chdir(path) == 0)
 			return (0);
-		else
-			perror(path);
+		perror(path);
 		return (0);
 	}
 	else

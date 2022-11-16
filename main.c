@@ -5,6 +5,9 @@
 
 /**
  * main - a simple shell program
+ * @ac: argument count
+ * @av: array of command line argument
+ * @env: environment variable
  * Return: 1 or 0;
  */
 

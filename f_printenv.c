@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * f_printenv - function to print environment variables
+ * @arg: command argument
+ * @env: environment variables
+ * Return: 0 for successful execution, -1 otherwise
+ */
+
 int f_printenv(char **arg, char **env)
 {
 	int i, j;

@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _getenv - function to get environment variable
+ * @env: environment variable
+ * @var: variable name
+ * Return: string array of environment
+ */
 char *_getenv(char **env, char *var)
 {
 	char *var_path, **wd;
