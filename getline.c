@@ -1,10 +1,11 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "main.h"
 
+/**
+ * _getline - get command
+ * @buffer: pointer to buffer
+ * @size: buffer size
+ * Return: cnt
+ */
 size_t _getline(char **buffer, size_t *size)
 {
 	size_t cnt = 0;
@@ -13,7 +14,7 @@ size_t _getline(char **buffer, size_t *size)
 
 	if (buffer == NULL)
 		return (-1);
-	
+
 	c = malloc(sizeof(char) * ch);
 
 	rd = read(STDIN_FILENO, c, ch);
@@ -27,7 +28,7 @@ size_t _getline(char **buffer, size_t *size)
 		free(tmp);
 		rd += read(STDIN_FILENO, (c + rd), st);
 	}
-	if(rd != 0)
+	if (rd != 0)
 	{
 		if (rd > (int) *size || *buffer == NULL)
 		{
@@ -36,14 +37,14 @@ size_t _getline(char **buffer, size_t *size)
 		}
 		for (i = 0; i < rd; i++)
 		{
-			if(c[i] == '\n' || !c[i])
+			if (c[i] == '\n' || !c[i])
 			{
 				(*buffer)[cnt] = 0;
 				return (cnt);
 			}
-	        	(*buffer)[cnt++] = c[i];
+			(*buffer)[cnt++] = c[i];
 		}
 	}
-        (*buffer[cnt]) = 0;
+	(*buffer[cnt]) = 0;
 	return (cnt);
 }
