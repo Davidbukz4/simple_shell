@@ -18,7 +18,7 @@ int main(int ac, char **av, char **env)
 
 	if (ac >= 2)
 	{
-		if (execve(av[1], av, NULL) == -1)
+		if (execve(av[1], av, env) == -1)
 		{
 			perror("Error:");
 			exit(-1);
