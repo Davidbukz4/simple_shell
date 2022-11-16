@@ -6,11 +6,12 @@
  * Return: int
  */
 
-int exe_syscmd(char **argv)
+int exe_syscmd(char **argv, char **env)
 {
 	pid_t child_pid;
 	int status;
 	struct stat sb;
+	int errno;
 
 	if (stat(argv[0], &sb) == 0)
 	{
@@ -22,7 +23,7 @@ int exe_syscmd(char **argv)
 		}
 		if (child_pid == 0)
 		{
-			if (execve(argv[0], argv, NULL) == -1)
+			if (execve(argv[0], argv, env) == -1)
 			{
 				perror(argv[0]);
 				return (-1);
@@ -58,7 +59,7 @@ int exe_cmd(char *buf, char **env)
 	if (ret == 0)
 		return (0);
 	full_path(argv, env);
-	ret = exe_syscmd(argv);
+	ret = exe_syscmd(argv, env);
 	return (ret);
 }
 
