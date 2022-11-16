@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <stdbool.h>
 
 /**
  * struct builtin_cmd - structure to handle builtin command
@@ -23,8 +24,13 @@ typedef struct builtin_cmd
 	int (*func)();
 } builtin_cmd;
 
+struct flags
+{
+	bool interactive;
+} flags;
 
 int _putchar(char c);
+void prompt(void);
 char **_strtow(char *str, char delim);
 int _strlen(char *str);
 char *_strncpy(char *dest, char *src, int n);

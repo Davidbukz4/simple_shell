@@ -21,9 +21,7 @@ int main(int ac, char **av, char **env)
 		return (-1);
 	while (1)
 	{
-		_putchar('$');
-		_putchar(' ');
-		_putchar(-1);
+		prompt();
 		x = getline(&buf, &n, stdin);
 		if ((int) x == -1)
 			break;
@@ -34,10 +32,7 @@ int main(int ac, char **av, char **env)
 			continue;
 		child_pid = fork();
 		if (child_pid == -1)
-		{
 			perror(av[0]);
-			return (-1);
-		}
 		if (child_pid == 0)
 		{
 			if (execve(argv[0], argv, env) == -1)
@@ -47,6 +42,8 @@ int main(int ac, char **av, char **env)
 			wait(&status);
 		free(argv);
 	}
+	if ((int) x < 0 && flags.interactive)
+		write(STDERR_FILENO, "\n", 1);
 	free(buf);
 	return (0);
 }
