@@ -16,8 +16,14 @@ int main(int ac, char **av, char **env)
 	char *buf = NULL;
 	size_t x = 0, n = 8;
 
-	if (ac || av)
+	if (ac >= 2)
 	{
+		if (execve(av[1], av, NULL) == -1)
+		{
+			perror("Error:");
+			exit(-1);
+		}
+		return (0);
 	}
 
 	while (1)
