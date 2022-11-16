@@ -13,6 +13,9 @@
 #include <errno.h>
 #include <stdbool.h>
 
+extern char **environ;
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
+
 struct flags
 {
 	bool interactive;
