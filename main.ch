@@ -7,23 +7,27 @@
  * Return: 0
  */
 
-void execution(char *cp, char **cmd)
+void execution(char **cmd)
 {
 	pid_t child_pid;
 	int status;
 	char **env = environ;
+	int i;
 
 	child_pid = fork();
 	if (child_pid < 0)
-		perror(cp);
+		perror(cmd[0]);
 	if (child_pid == 0)
 	{
 		execve(cmd[0], cmd, env);
-		perror(cp);
+		perror(cmd[0]);
+		for (i = 0; cmd[i]; i++)
+			free(cmd[i]);
+		free(cmd);
 		exit(98);
 	}
 	else
-	wait(&status);
+		wait(&status);
 }
 
 /**
@@ -35,15 +39,14 @@ void execution(char *cp, char **cmd)
  * Return: 0
  */
 
-int main(int ac, char **av, char *envp[])
+int main(void)
 {
 	char *line = NULL;
 	size_t bufsize = 0;
 	ssize_t linesize = 0;
 	char **command = NULL;
-	(void)envp, (void)av;
-	if (ac < 1)
-		return (-1);
+	int i;
+
 	while (1)
 	{
 		prompt();
@@ -55,10 +58,13 @@ int main(int ac, char **av, char *envp[])
 		command = _strtow(line, ' ');
 		if (command == NULL || *command == NULL || **command == '\0')
 			continue;
-		execution(av[0], command);
+		execution(command);
+		for (i = 0; command[i]; i++)
+			free(command[i]);
+		free(command);
+		free(line);
 	}
 	if (linesize < 0 && flags.interactive)
 		write(STDERR_FILENO, "\n", 1);
-	free(line);
 	return (0);
 }
