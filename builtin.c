@@ -1,7 +1,7 @@
 /*
  * File: builtin.c
- * Auth: Alex Yu
- *       Brennan D Baraban
+ * Auth: Nnamani John
+ *       Egwuatu David.
  */
 
 #include "shell.h"

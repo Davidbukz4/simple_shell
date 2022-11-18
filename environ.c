@@ -1,7 +1,7 @@
 /*
  * File: environ.c
- * Auth: Alex Yu
- *       Brennan D Baraban
+ * Auth: John Nnamani
+ *       Egwuatu David
  */
 
 #include "shell.h"
