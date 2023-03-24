@@ -18,23 +18,6 @@ This Simple_shell project can be compiled and launched from the command line, wh
 	exit - exit the shell
 	pwd - Print the absolute pathname
 
-## Files
-Description of the files used:
-
-| Files | Description             |
-| --------- | ------------------- |
-| _calloc.c  | Function that allocates memory |
-| _cd.c    | Function that changes to the directory of the process |
-| _ex.c    | Function that finds if input is esit, therefore terminates process |
-| _fork.c | Function that creates process and executes |
-| _getline.c | Function that reads what the user writes |
-| _signal.c | Function that handles the SIGINT signal |
-| _writerr.c | Function that gets each error |
-| checkbin.c | Function that checks if commands exits in the PATH |
-| gridfree.c | Function that free an array of arrays |
-| parser.c | Function that creates an array of pointers depending on the delimit characters used |
-| sshell.c | Main function that starts the shell |
-| shell. h | Header file with all the functions prototypes |
 
 ## Examples
 
